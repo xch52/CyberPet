@@ -16,6 +16,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { green  } from '@mui/material/colors';
 
+
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -63,70 +64,52 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const tiers = [
+const tiers_1 = [
     {
-        title: 'Basic',
-        price: '1',
-        description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-        buttonText: 'Make a wish',
-        buttonVariant: 'outlined',
-    },
-    {
-        title: 'Ultimate',
+        title: 'Luxury',
         subheader: 'Most popular',
         price: '5',
+        chance: '10 chances',
         description: [
-            '20 users included',
-            '10 GB of storage',
-            'Help center access',
-            'Priority email support',
+            '10 chances to wish',
+            '2 starts pet is promised',
+            'Higher probability',
+            'Lower single price',
         ],
         buttonText: 'Make a wish',
         buttonVariant: 'contained',
     },
+];
+
+const tiers_2 = [
     {
-        title: 'Advanced',
-        price: '2.5',
+        title: 'Basic',
+        subheader: 'Worth trying',
+        price: '0.6',
+        chance: '1 chance',
         description: [
-            '50 users included',
-            '30 GB of storage',
-            'Help center access',
-            'Phone & email support',
+            '1 chance to wish',
+            'no promise',
+            'Basic probability',
+            'Basic single price',
         ],
         buttonText: 'Make a wish',
-        buttonVariant: 'outlined',
+        buttonVariant: 'contained',
     },
 ];
 
 
 export default function Lottery() {
     const classes = useStyles();
+    const allTiers = [...tiers_1, ...tiers_2];
 
     return (
         <React.Fragment>
             <CssBaseline />
             <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
-                {/* <Toolbar className={classes.toolbar}>
-          <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-            Company name
-          </Typography>
-          <nav>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              Features
-            </Link>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              Enterprise
-            </Link>
-            <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-              Support
-            </Link>
-          </nav>
-          <Button href="#" color="primary" variant="outlined" className={classes.link}>
-            Login
-          </Button>
-        </Toolbar> */}
+ 
             </AppBar>
-            {/* Hero unit */}
+            {/* 标题 */}
             <Container maxWidth="sm" component="main" className={classes.heroContent}>
                 <Typography component="h1" variant="h2" align="center" color="orange" gutterBottom>
                     Fortune Pool
@@ -136,28 +119,27 @@ export default function Lottery() {
                 you have a chance to get it!
                 </Typography>
             </Container>
-            {/* End hero unit */}
+
+            {/* 选项框展示*/}
             <Container maxWidth="md" component="main">
-                <Grid container spacing={5} alignItems="flex-end">
-                    {tiers.map((tier) => (
-                        // Enterprise card is full width at sm breakpoint
-                        <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
+                <Grid container spacing={5} alignItems="flex-end" justifyContent="center">
+                    {allTiers.map((tier, index) => (
+                        <Grid item key={index} xs={12} sm={6} md={6}>
                             <Card>
                                 <CardHeader
                                     title={tier.title}
                                     subheader={tier.subheader}
                                     titleTypographyProps={{ align: 'center' }}
                                     subheaderTypographyProps={{ align: 'center' }}
-                                    action={tier.title === 'Pro' ? <StarIcon /> : null}
                                     className={classes.cardHeader}
                                 />
                                 <CardContent>
                                     <div className={classes.cardPricing}>
                                         <Typography component="h2" variant="h3" color="textPrimary">
-                                            ${tier.price}
+                                            {tier.price} ETH
                                         </Typography>
                                         <Typography variant="h6" color="textSecondary">
-                                            /a chance
+                                             /{tier.chance} 
                                         </Typography>
                                     </div>
                                     <ul>

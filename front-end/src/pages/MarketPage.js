@@ -42,10 +42,12 @@ const products = [
     image: HomeExample1,
     title: "Adventure Cat",
     petclass: "1",
+    attribute:["Cool","Nice"],
     description: "This is a professional cat who loves adventure.",
     price: 3.5,
+    prebid:[0.1,0.2,0.3,0.4,0.5],
     states: "1",
-    deadline: Math.floor(Date.now() / 1000) + 200,
+    deadline: Math.floor(Date.now() / 1000) + 2000,
     alt: "Product 1",
   },
   {
@@ -53,10 +55,12 @@ const products = [
     image: HomeExample2,
     title: "Fashionable Dog",
     petclass: "2",
+    attribute:["Cool","Nice"],
     description: "This is a dog who loves fashion and music.",
     price: 2.1,
+    prebid:[0.1,0.2,0.3,0.4,0.5],
     states: "1",
-    deadline: Math.floor(Date.now() / 1000) + 200,
+    deadline: Math.floor(Date.now() / 1000) + 1000,
     alt: "Product 2",
   },
   {
@@ -64,8 +68,10 @@ const products = [
     image: HomeExample1,
     title: "Adventure Cat",
     petclass: "1",
+    attribute:["Cool","Nice"],
     description: "This is a professional cat who loves adventure.",
     price: 1.8,
+    prebid:[0.1,0.2,0.3,0.4,0.5],
     states: "0",
     deadline: Math.floor(Date.now() / 1000) + 200,
     alt: "Product 3",
@@ -75,10 +81,12 @@ const products = [
     image: HomeExample2,
     title: "Fashionable Dog",
     petclass: "2",
+    attribute:["Cool","Nice"],
     description: "This is a dog who loves fashion and music.",
     price: 0.9,
+    prebid:[0.1,0.2,0.3,0.4,0.5],
     states: "0",
-    deadline: Math.floor(Date.now() / 1000) + 200,
+    deadline: Math.floor(Date.now() / 1000) + 600,
     alt: "Product 4",
   },
   {
@@ -86,10 +94,12 @@ const products = [
     image: HomeExample2,
     title: "Fashionable Dog",
     petclass: "2",
+    attribute:["Cool","Nice"],
     description: "This is a dog who loves fashion and music.",
     price: 1.2,
+    prebid:[0.1,0.2,0.3,0.4,0.5],
     states: "1",
-    deadline: Math.floor(Date.now() / 1000) + 200,
+    deadline: Math.floor(Date.now() / 1000) + 500,
     alt: "Product 5",
   },
   {
@@ -97,10 +107,12 @@ const products = [
     image: HomeExample1,
     title: "Adventure Cat",
     petclass: "3",
+    attribute:["Cool","Nice"],
     description: "This is a professional cat who loves adventure.",
     price: 3.1,
+    prebid:[0.1,0.2,0.3,0.4,0.5],
     states: "1",
-    deadline: Math.floor(Date.now() / 1000) + 200,
+    deadline: Math.floor(Date.now() / 1000) + 50,
     alt: "Product 6",
   },
   // 可以根据需要添加更多商品
@@ -111,7 +123,7 @@ const defaultTheme = createTheme();
 const sidebar = {
   title: 'About',
   description:
-    'In the market you can trade your pet according to your preference. In addition, you can use filters to make specific choices.',
+    'In the market you can trade your pet according to your preference. In addition, you can use filters to make specific choices. You can also click each image to get more information',
   archives: [
     { title: 'Class 1 : Initial', url: '#' },
     { title: 'Class 2 : Mature', url: '#' },
@@ -133,6 +145,7 @@ export default function MarketPage() {
   const [showClass3, setShowClass3] = useState(false);
   const [showOnSale, setShowOnSale] = useState(false);
   const [showSold, setShowSold] = useState(false);
+  const [showExpired, setShowExpired] = useState(false);
   const [priceOrder, setPriceOrder] = useState('none');
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
@@ -269,8 +282,10 @@ export default function MarketPage() {
                     image={product.image}
                     title={product.title}
                     petclass={product.petclass}
+                    attribute={product.attribute}
                     description={product.description}
                     price={`${product.price} ETH`}
+                    prebid={product.prebid}
                     states={product.states}
                     deadline={product.deadline}
                     alt={product.alt}

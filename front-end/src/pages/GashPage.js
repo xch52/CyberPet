@@ -32,8 +32,6 @@ import Link from '@mui/material/Link';
 import { makeStyles } from '@mui/styles';
 
 
-
-
 const sections = [
   { title: 'Home', url: '/' },
   { title: 'Market', url: '/Market' },
@@ -75,6 +73,28 @@ const useStyles = makeStyles((theme) => ({
       padding: 0,
       listStyle: 'none',
     },
+    '0%': {
+      transform: 'translateX(0)',
+    },
+    '100%': {
+      transform: 'translateX(-100%)', // 根据实际内容长度调整
+    },
+    '@keyframes scrollRight': {
+      '0%': {
+        transform: 'translateX(-100%)',
+      },
+      '100%': {
+        transform: 'translateX(0)',
+      },
+    },
+  },
+  scrollContainer: {
+    display: 'flex',
+    overflowX: 'auto',
+    animation: 'scrollRight 40s linear infinite', // 修改为从左向右的动画
+    '&::-webkit-scrollbar': {
+      display: 'none', // 隐藏滚动条
+    }
   },
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
@@ -113,40 +133,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const tiers = [
-  {
-    title: 'Free',
-    price: '0',
-    description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-    buttonText: 'Sign up for free',
-    buttonVariant: 'outlined',
-  },
-  {
-    title: 'Pro',
-    subheader: 'Most popular',
-    price: '15',
-    description: [
-      '20 users included',
-      '10 GB of storage',
-      'Help center access',
-      'Priority email support',
-    ],
-    buttonText: 'Get started',
-    buttonVariant: 'contained',
-  },
-  {
-    title: 'Enterprise',
-    price: '30',
-    description: [
-      '50 users included',
-      '30 GB of storage',
-      'Help center access',
-      'Phone & email support',
-    ],
-    buttonText: 'Contact us',
-    buttonVariant: 'outlined',
-  },
-];
 const footers = [
   {
     title: 'Company',
@@ -168,9 +154,7 @@ const footers = [
 
 
 
-
-
-export default function Blog() {
+export default function GashPage() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
